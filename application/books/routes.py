@@ -9,7 +9,7 @@ def handle_books():
     if request.method == "GET": return index()
 
 @app.route('/books/<int:id>', methods=["GET", "PATCH", "DELETE"])
-def handle_books(id):
+def handle_book(id):
     if request.method == "GET": return show(id)
     if request.method == "PATCH": return update(id)
     if request.method == "DELETE": return destroy(id)

@@ -29,7 +29,7 @@ def create():
 
         return jsonify({ "data": new_book.json }), 201
     except:
-        raise exceptions.BadRequest(f"We couldn't add this book")
+        raise exceptions.BadRequest(f"We couldn't add this book.")
 
 def update(id):
     data = request.json

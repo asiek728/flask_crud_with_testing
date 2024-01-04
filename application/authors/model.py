@@ -22,11 +22,16 @@ class Author(db.Model):
     
     @property
     def json(self):
+        books = []
+        for book in self.books:
+            books.append({"name": book.name, "genre": book.genre})
+
         return {
             "id": self.id,
             "name": self.name,
             "age": self.age,
             "genres": self.genres,
+            "books": books or "no books added yet"
         }
 
 
