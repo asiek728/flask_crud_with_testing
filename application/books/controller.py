@@ -32,15 +32,19 @@ def create():
         raise exceptions.BadRequest(f"We couldn't add this book.")
 
 def update(id):
-    data = request.json
-    book = Book.query.filter_by(id=id).first()
+    try:
+        data = request.json
+        book = Book.query.filter_by(id=id).first()
 
-    for (attribute, value) in data.items():
-        if hasattr(book, attribute):
-            setattr(book, attribute, value)
+        for (attribute, value) in data.items():
+            if hasattr(book, attribute):
+                setattr(book, attribute, value)
 
-    db.session.commit()
-    return jsonify({ "data": book.json })
+        db.session.commit()
+        return jsonify({ "data": book.json })
+    except:
+        raise exceptions.InternalServerError(f"Invalid values entered.")
+
 
 def destroy(id):
     book = Book.query.filter_by(id=id).first()
