@@ -7,9 +7,12 @@ def test_create_author(create_author):
 
     assert author.__repr__() == f"Author(id: {author.id}, name: {author.name}, age: {author.age}, genres: {author.genres})"
     
+    books = []
+
     assert author.json == {
         "id": author.id,
         "name": author.name,
         "age": author.age,
         "genres": author.genres,
+        "books": books or "no books added yet"
     }
