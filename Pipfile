@@ -9,8 +9,16 @@ flask-cors = "*"
 python-dotenv = "*"
 flask-sqlalchemy = "*"
 psycopg2-binary = "*"
+pytest-watch = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-flask-sqlalchemy = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.10"
+
+[scripts]
+test = "ptw -- -v -rP"
+coverage = "pytest --cov=application --cov-report term-missing"

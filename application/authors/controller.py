@@ -12,9 +12,9 @@ def index():
         raise exceptions.InternalServerError(f"Something went wrong")
     
 def show(id):
-    character = Author.query.filter_by(id=id).first()
+    authors = Author.query.filter_by(id=id).first()
     try:
-        return jsonify({ "data": character.json }), 200
+        return jsonify({ "data": authors.json }), 200
     except:
         raise exceptions.NotFound(f"Author not found")
 
