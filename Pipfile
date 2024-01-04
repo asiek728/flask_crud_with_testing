@@ -10,6 +10,7 @@ python-dotenv = "*"
 flask-sqlalchemy = "*"
 psycopg2-binary = "*"
 pytest-watch = "*"
+flask-testing = "*"
 
 [dev-packages]
 pytest = "*"
