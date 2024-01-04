@@ -1,5 +1,5 @@
 from application import db, app
-
+#from application.authors.model import Author
 app.app_context().push()
 
 class Book(db.Model):
@@ -8,7 +8,7 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     genre = db.Column(db.String(35), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('author.id'), nullable=False)
 
     def __init__(self, name, genre, author_id):
         self.name = name

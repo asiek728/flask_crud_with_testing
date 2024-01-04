@@ -1,4 +1,5 @@
 from application import db, app
+from application.books.model import Book
 
 app.app_context().push()
 
@@ -9,7 +10,7 @@ class Author(db.Model):
     name = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
     genres = db.Column(db.String(100), nullable=False)
-    books = db.relationship('Book', backref='author', lazy=True)
+    books = db.relationship('Book', backref='author', lazy=True) #read data later
 
     def __init__(self, name, age, genres):
         self.name = name
@@ -29,28 +30,28 @@ class Author(db.Model):
         }
 
 
+#
+# class Book(db.Model):
+#     #__tablename__ = "books"
 
-class Book(db.Model):
-    #__tablename__ = "books"
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(100), nullable=False)
+#     genre = db.Column(db.String(35), nullable=False)
+#     author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    genre = db.Column(db.String(35), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('author.id'))
+#     def __init__(self, name, genre, author_id):
+#         self.name = name
+#         self.genre = genre
+#         self.author_id = author_id
 
-    def __init__(self, name, genre, author_id):
-        self.name = name
-        self.genre = genre
-        self.author_id = author_id
-
-    def __repr__(self):
-        return f"Book(id: {self.id}, name: {self.name}, genre: {self.genre})"
+#     def __repr__(self):
+#         return f"Book(id: {self.id}, name: {self.name}, genre: {self.genre})"
     
-    @property
-    def json(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "genre": self.genre,
-            "author_id": self.author_id
-        }
+#     @property
+#     def json(self):
+#         return {
+#             "id": self.id,
+#             "name": self.name,
+#             "genre": self.genre,
+#             "author_id": self.author_id
+#         }
