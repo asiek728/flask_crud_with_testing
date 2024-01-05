@@ -3,7 +3,7 @@ from werkzeug import exceptions
 from .model import Author
 from .. import db
 
-
+authors = []
 def index():
     authors = Author.query.all()
     try:
